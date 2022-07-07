@@ -6,25 +6,26 @@
 /*   By: yde-goes <yde-goes@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 22:12:17 by yde-goes          #+#    #+#             */
-/*   Updated: 2022/07/02 01:42:07 by yde-goes         ###   ########.fr       */
+/*   Updated: 2022/07/07 22:38:59 by yde-goes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-t_list	*ft_lstnew(void *content)
+t_line	*ft_lstnew(char *content)
 {
-	t_list	*new_node;
+	t_line	*new_node;
 
 	new_node = malloc(sizeof(*new_node));
 	if (!new_node)
 		return (NULL);
 	new_node->content = content;
+	new_node->length = 0;
 	new_node->next = NULL;
 	return (new_node);
 }
 
-t_list	*ft_lstlast(t_list *lst)
+t_line	*ft_lstlast(t_line *lst)
 {
 	if (!lst)
 		return (NULL);
@@ -35,9 +36,9 @@ t_list	*ft_lstlast(t_list *lst)
 	return (lst);
 }
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_line **lst, t_line *new)
 {
-	t_list	*temp;
+	t_line	*temp;
 
 	if (!new)
 		return ;
@@ -48,4 +49,37 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	}
 	temp = ft_lstlast(*lst);
 	temp->next = new;
+}
+
+//ft_lstclear(cache, free);
+void	ft_lstclear(t_line **lst, void (*del)(void *))
+{
+	//t_line	*temp_lst;
+	t_line	*temp_lst;
+
+	//Argument will not be used
+	//(void) del;
+	if (!lst || !del)
+		return ;
+	//temp_lst = *lst;
+	while (*lst != NULL)
+	{
+		/* NOTE: Precedencia de operadores. Qual endereço acessar? */
+		temp_lst = *lst;
+		*lst = (*lst)->next;
+		///ft_lstdelone(temp_lst, del);
+		if (temp_lst->content)
+			free(temp_lst->content);
+		free(temp_lst);
+		//temp_lst = temp_lst;
+	}
+	//*lst = NULL;
+}
+
+void	ft_lstdelone(t_line *lst, void (*del)(void *))
+{
+	if (!lst || !del)
+		return ;
+	del(lst->content);
+	free(lst);
 }

@@ -6,26 +6,37 @@
 /*   By: yde-goes <yde-goes@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 22:12:25 by yde-goes          #+#    #+#             */
-/*   Updated: 2022/07/02 01:42:00 by yde-goes         ###   ########.fr       */
+/*   Updated: 2022/07/07 04:17:51 by yde-goes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+# endif
+
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
 
-typedef struct s_list
+typedef struct s_line
 {
-	void			*content;
-	struct s_list	*next;
-}					t_list;
+	char			*content;
+	int				length;
+	struct s_line	*next;
+}					t_line;
 
-t_list	*ft_lstnew(void *content);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-	
 char	*get_next_line(int fd);
+
+t_line	*ft_lstnew(char *content);
+
+t_line	*ft_lstlast(t_line *lst);
+
+void	ft_lstadd_back(t_line **lst, t_line *new);
+
+void	ft_lstclear(t_line **lst, void (*del)(void *));
+
+void	ft_lstdelone(t_line *lst, void (*del)(void *));
 #endif
