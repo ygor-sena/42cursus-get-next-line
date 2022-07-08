@@ -6,7 +6,7 @@
 /*   By: yde-goes <yde-goes@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 22:12:21 by yde-goes          #+#    #+#             */
-/*   Updated: 2022/07/08 20:04:30 by yde-goes         ###   ########.fr       */
+/*   Updated: 2022/07/08 21:39:12 by yde-goes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-void	read_line(t_line **cache, int fd)
+static void	read_line(t_line **cache, int fd)
 {
 	int		output;
 	char	*buffer;
@@ -57,7 +57,7 @@ void	read_line(t_line **cache, int fd)
 	}
 }
 
-int	is_new_line(t_line *cache)
+static int	is_new_line(t_line *cache)
 {
 	int		i;
 
@@ -78,7 +78,7 @@ int	is_new_line(t_line *cache)
 	return (0);
 }
 
-void	create_line(t_line *cache, char **line)
+static void	create_line(t_line *cache, char **line)
 {
 	int		ln_size;
 	int		i;
@@ -107,7 +107,7 @@ void	create_line(t_line *cache, char **line)
 	(*line)[ln_size] = '\0';
 }
 
-void	refactor_line(t_line **cache)
+static void	refactor_line(t_line **cache)
 {
 	t_line	*temp;
 	t_line	*new_node;

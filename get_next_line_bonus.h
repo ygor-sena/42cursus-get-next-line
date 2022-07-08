@@ -6,7 +6,7 @@
 /*   By: yde-goes <yde-goes@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 22:12:25 by yde-goes          #+#    #+#             */
-/*   Updated: 2022/07/08 20:39:46 by yde-goes         ###   ########.fr       */
+/*   Updated: 2022/07/08 21:44:27 by yde-goes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # ifndef MAX_FD
 #  define MAX_FD 1024
+# endif
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1024
 # endif
 
 # include <stdlib.h>
