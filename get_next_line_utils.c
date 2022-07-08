@@ -6,7 +6,7 @@
 /*   By: yde-goes <yde-goes@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 22:12:17 by yde-goes          #+#    #+#             */
-/*   Updated: 2022/07/08 00:18:48 by yde-goes         ###   ########.fr       */
+/*   Updated: 2022/07/08 19:25:24 by yde-goes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,43 +51,27 @@ void	ft_lstadd_back(t_line **lst, t_line *new)
 	temp->next = new;
 }
 
-//ft_lstclear(cache, free);
 void	ft_lstclear(t_line **lst, void (*del)(void *))
 {
-	//t_line	*temp_lst;
 	t_line	*temp_lst;
 
-	//Argument will not be used
-	//(void) del;
 	if (!lst || !del)
 		return ;
-	//temp_lst = *lst;
 	while (*lst != NULL)
 	{
-		/* NOTE: Precedencia de operadores. Qual endereço acessar? */
 		temp_lst = *lst;
 		*lst = (*lst)->next;
-		ft_lstdelone(temp_lst, del);
-		//free(temp_lst->content);
-		//free(temp_lst);
-		//temp_lst = temp_lst;
+		free(temp_lst->content);
+		free(temp_lst);
 	}
-	//*lst = NULL;
-}
-
-void	ft_lstdelone(t_line *lst, void (*del)(void *))
-{
-	if (!lst || !del)
-		return ;
-	del(lst->content);
-	free(lst);
+	*lst = NULL;
 }
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*arr;
-	int		alloc_size;
-	int	i;
+	void			*arr;
+	int				alloc_size;
+	int				i;
 	unsigned char	*cast_s;
 
 	alloc_size = nmemb * size;
