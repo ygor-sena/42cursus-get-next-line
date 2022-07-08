@@ -6,7 +6,7 @@
 /*   By: yde-goes <yde-goes@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 22:12:21 by yde-goes          #+#    #+#             */
-/*   Updated: 2022/07/08 19:46:38 by yde-goes         ###   ########.fr       */
+/*   Updated: 2022/07/08 20:57:36 by yde-goes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	refactor_line(t_line **cache);
 
 char	*get_next_line(int fd)
 {
-	static t_line	*cache = {NULL};
+	static t_line	*cache = NULL;
 	char			*line;
 
 	line = NULL;
