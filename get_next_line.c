@@ -6,7 +6,7 @@
 /*   By: yde-goes <yde-goes@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 22:12:21 by yde-goes          #+#    #+#             */
-/*   Updated: 2022/07/08 00:03:58 by yde-goes         ###   ########.fr       */
+/*   Updated: 2022/07/08 00:24:12 by yde-goes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	create_line(cache, &line);
 	refactor_line(&cache);
-	free(cache);
+	//free(cache);
 	return (line);
 }
 
@@ -45,10 +45,10 @@ void	read_line(t_line **cache, int fd)
 	/* If funcion is 0, then there is no newline. If 1, there is a new line */
 	while (!is_new_line(*cache))
 	{
-		buffer = malloc(sizeof(*buffer) * (BUFFER_SIZE + 1));
-		/* //NULL --> read --> -1 
+		buffer = ft_calloc(sizeof(*buffer), (BUFFER_SIZE + 1));
+		//NULL --> read --> -1 
 		if (!buffer)
-			return ; */
+			return ;
 		output = read(fd, buffer, BUFFER_SIZE);
 		/* Free if EOF (output == 0) or if an error happenned (output == 1) */
 		if (output == 0 || output == -1)
@@ -67,25 +67,25 @@ void	read_line(t_line **cache, int fd)
 int	is_new_line(t_line *cache)
 {
 	int		i;
-	t_line	*temp;
+	//t_line	*temp;
 
-	temp = ft_lstlast(cache);
+	cache = ft_lstlast(cache);
 	/* NOTE: If temp is null, then the list wasn't created */
-	if (!temp || !temp->content)
+	if (!cache)
 		return (0);
 	i = 0;
-	while (temp->content[i] != '\0') //why?
+	while (cache->content[i] != '\0') //why?
 	{
-		if (temp->content[i] == '\n')
+		if (cache->content[i] == '\n')
 		{
 			/* Length of temp is until \n */
-			temp->length = ++i;
+			cache->length = ++i;
 			return (1);
 		}
 		i++;
 	}
 	/* Length equals BUFFER_SIZE, there is no \n */
-	temp->length = i;
+	cache->length = i;
 	return (0);
 }
 

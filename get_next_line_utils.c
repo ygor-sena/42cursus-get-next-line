@@ -6,7 +6,7 @@
 /*   By: yde-goes <yde-goes@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 22:12:17 by yde-goes          #+#    #+#             */
-/*   Updated: 2022/07/07 22:38:59 by yde-goes         ###   ########.fr       */
+/*   Updated: 2022/07/08 00:18:48 by yde-goes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,9 @@ void	ft_lstclear(t_line **lst, void (*del)(void *))
 		/* NOTE: Precedencia de operadores. Qual endereço acessar? */
 		temp_lst = *lst;
 		*lst = (*lst)->next;
-		///ft_lstdelone(temp_lst, del);
-		if (temp_lst->content)
-			free(temp_lst->content);
-		free(temp_lst);
+		ft_lstdelone(temp_lst, del);
+		//free(temp_lst->content);
+		//free(temp_lst);
 		//temp_lst = temp_lst;
 	}
 	//*lst = NULL;
@@ -82,4 +81,27 @@ void	ft_lstdelone(t_line *lst, void (*del)(void *))
 		return ;
 	del(lst->content);
 	free(lst);
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*arr;
+	int		alloc_size;
+	int	i;
+	unsigned char	*cast_s;
+
+	alloc_size = nmemb * size;
+	if (!alloc_size || alloc_size / nmemb != size)
+		return (NULL);
+	arr = malloc(alloc_size);
+	if (arr == NULL)
+		return (NULL);
+	i = 0;
+	cast_s = arr;
+	while (i < alloc_size)
+	{
+		cast_s[i] = '\0';
+		i++;
+	}
+	return (cast_s);
 }
