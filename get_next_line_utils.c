@@ -6,7 +6,7 @@
 /*   By: yde-goes <yde-goes@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 22:12:17 by yde-goes          #+#    #+#             */
-/*   Updated: 2022/07/08 19:25:24 by yde-goes         ###   ########.fr       */
+/*   Updated: 2022/07/10 00:41:34 by yde-goes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void	ft_lstclear(t_line **lst, void (*del)(void *))
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void			*arr;
-	int				alloc_size;
-	int				i;
+	size_t			alloc_size;
+	size_t			i;
 	unsigned char	*cast_s;
 
 	alloc_size = nmemb * size;
