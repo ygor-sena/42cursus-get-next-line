@@ -6,7 +6,7 @@
 /*   By: yde-goes <yde-goes@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 22:12:21 by yde-goes          #+#    #+#             */
-/*   Updated: 2022/07/08 21:39:12 by yde-goes         ###   ########.fr       */
+/*   Updated: 2022/08/06 21:23:34 by yde-goes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static void	refactor_line(t_line **cache);
 
 char	*get_next_line(int fd)
 {
-	static t_line	*cache[MAX_FD] = {NULL};
+	static t_line	*cache[OPEN_MAX] = {NULL};
 	char			*line;
 
 	line = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0)
 		return (NULL);
 	read_line(&cache[fd], fd);
 	if (!cache[fd])

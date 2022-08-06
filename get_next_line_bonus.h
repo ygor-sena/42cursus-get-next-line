@@ -6,15 +6,15 @@
 /*   By: yde-goes <yde-goes@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 22:12:25 by yde-goes          #+#    #+#             */
-/*   Updated: 2022/07/08 21:44:27 by yde-goes         ###   ########.fr       */
+/*   Updated: 2022/08/06 21:17:26 by yde-goes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
 
-# ifndef MAX_FD
-#  define MAX_FD 1024
+# ifndef OPEN_MAX
+#  define OPEN_MAX 1024
 # endif
 
 # ifndef BUFFER_SIZE
