@@ -39,3 +39,8 @@ $> gcc -Wall -Wextra -Werror -D BUFFER_SIZE=<length> <files>.c
 ```
 
 Where _\<length\>_ can be substituted by the number of bytes read at a time into the buffer for the read function. If _BUFFER_SIZE_ is not defined, it will be defined to 1024 as standard value for the buffer size.
+
+## References
+
+- [Acelera GNL](https://rodsmade.notion.site/Acelera-Get_next_line-4902aab835ef4b86a7c55d82cc5c19ec) by [rodsmade](https://github.com/rodsmade).
+- To test the project and check for memory leaks, I used the [gnlTester](https://github.com/Tripouille/gnlTester), made by [jgambard](https://github.com/Tripouille).
