@@ -32,13 +32,25 @@ The project contains six files. The ones that ends with `_bonus` are the bonus p
 
 ## How to use the project
 
-To use the `get_next_line()` in your project it's necessary to include the three files mentioned above to be compilated, either the mandatory or the bonus files, and be sure to include the following flags:
+To use the `get_next_line()` in your project it's necessary to include the three files mentioned above to be compiled, either the mandatory or the bonus files, and be sure to include the following flags:
 
 ```
 $> gcc -Wall -Wextra -Werror -D BUFFER_SIZE=<length> <files>.c
 ```
 
 Where _\<length\>_ can be substituted by the number of bytes read at a time into the buffer for the read function. If _BUFFER_SIZE_ is not defined, it will be defined to 1024 as standard value for the buffer size.
+
+To reference the `get_next_line()` function inside your project, don't forget to add the header:
+
+```c
+#include "get_next_line.h"
+```
+
+If you want to use the mandatory project, that is. If you want to use the bonus project to read multiple file descriptors, add the header:
+
+```c
+#include "get_next_line_bonus.h"
+```
 
 ## References
 
