@@ -9,13 +9,13 @@
     <img src="https://img.shields.io/badge/Status-Completed-brightgreen.svg" alt="Status">
 </p>
 
-## About the project
+## 📣 About the project
 
 _Because reading a line from a fd is way too tedious_, this project is about creating your own function that returns a line read from one file descriptor or more, if you consider the bonus project requirement. The function get_next_line() returns NULL, if there is nothing else to read or if an error occurred. It should work as expected both when reading a file and when reading from the standard output.
 
 The main objetive of this project is to make students learn about **static variables**.
 
-## How it was implemented
+## 📈 How it was implemented
 
 There are many ways to solve the problem stated. Either using an array or a singly linked list as a data structure. I decided to implement the last one because it was an opportunity to see how linked list are used.
 
@@ -30,7 +30,7 @@ The project contains six files. The ones that ends with `_bonus` are the bonus p
   - `refactor_line()`: if a buffer sized chunk has `\n`, the function will save the content after `\n` to create the next line of the file descriptor by the time the `get_next_line()` function is called again. That's the reason why we need a static variable, the information isn't lost by the time the function ends.
 - `get_next_line_utils.c`: implements helper functions to manipulate heap(or dynamic) memory and singly linked lists.
 
-## How to use the project
+## ⚒️ How to use the project
 
 To use the `get_next_line()` in your project it's necessary to include the three files mentioned above to be compiled, either the mandatory or the bonus files, and be sure to include the following flags:
 
@@ -52,7 +52,7 @@ If you want to use the mandatory project, that is. If you want to use the bonus 
 #include "get_next_line_bonus.h"
 ```
 
-## References
+## 📖 References
 
 - [Acelera GNL](https://rodsmade.notion.site/Acelera-Get_next_line-4902aab835ef4b86a7c55d82cc5c19ec) by [rodsmade](https://github.com/rodsmade).
 - To test the project and check for memory leaks, I used the [gnlTester](https://github.com/Tripouille/gnlTester), made by [jgambard](https://github.com/Tripouille).
